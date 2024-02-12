@@ -25,9 +25,10 @@ pipeline {
         stage("Publish image") {
             steps {
                 script {
-                    docker.withRegistry('', registryCredential)
-                    dockerImage.push()
-                    dockerImage.push("latest")
+                    docker.withRegistry('', registryCredential) {
+                        dockerImage.push()
+                        dockerImage.push("latest")
+                    }
                 }
                 echo "trying to push Docker Build to DockerHub"
             }
