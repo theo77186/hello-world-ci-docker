@@ -25,7 +25,7 @@ pipeline {
         stage("Publish image") {
             steps {
                 script {
-                    docker.withRegistry("", registryCredential)
+                    docker.withRegistry('', registryCredential)
                     dockerImage.push()
                     dockerImage.push("latest")
                 }
